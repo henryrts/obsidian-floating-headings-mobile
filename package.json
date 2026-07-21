@@ -1,0 +1,10 @@
+{
+  "name": "obsidian-floating-headings-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile-compatible floating headings plugin for Obsidian",
+  "scripts": {
+    "verify": "node scripts/verify.mjs"
+  },
+  "license": "ISC"
+}
