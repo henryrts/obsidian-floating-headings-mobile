@@ -9,7 +9,7 @@ It displays a floating, collapsible outline beside the active Markdown note. Des
 - Tap the collapsed heading rail to open or close the outline.
 - Tap outside the outline to close it.
 - Selecting a heading closes the outline automatically on touch devices.
-- Larger touch targets for headings and collapse controls.
+- Larger touch targets for headings and controls.
 - Panel width and height adapt to small screens and safe areas.
 - Keyboard activation remains available for accessibility.
 - Uses a separate plugin ID, so it can coexist with the original plugin.
@@ -38,15 +38,17 @@ Disable the original Floating Headings plugin if both outlines appear.
 
 ## Desktop behavior
 
-Desktop behavior remains based on the upstream plugin: hover to expand, click a heading to navigate, filter headings, collapse heading groups, and configure position and appearance.
+Desktop keeps hover-to-expand navigation. The settings control panel side, vertical position, maximum heading level, panel width, filtering, and closing after navigation.
 
-## Development notes
+## Development
 
-The repository contains the bundled release inherited from upstream plus a reproducible mobile patch verifier. Run:
+The repository contains readable JavaScript source with no build step. Verify the release files with:
 
 ```bash
-node scripts/verify.mjs
+npm run verify
 ```
+
+Every push to `main` verifies the plugin and creates the matching GitHub release if it does not already exist.
 
 ## Attribution
 
