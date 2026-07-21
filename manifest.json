@@ -1,0 +1,10 @@
+{
+  "id": "floating-headings-mobile",
+  "name": "Floating Heading but Works on Mobile",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "A tap-friendly floating outline for navigating note headings on Obsidian mobile and desktop.",
+  "author": "henryrts",
+  "authorUrl": "https://github.com/henryrts",
+  "isDesktopOnly": false
+}
