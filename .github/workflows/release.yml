@@ -1,0 +1,39 @@
+name: Publish plugin release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify plugin files
+        run: node scripts/verify.mjs
+
+      - name: Read version
+        id: manifest
+        shell: bash
+        run: echo "version=$(node -p \"require('./manifest.json').version\")" >> "$GITHUB_OUTPUT"
+
+      - name: Create release if missing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.manifest.outputs.version }}
+        shell: bash
+        run: |
+          if gh release view "$VERSION" >/dev/null 2>&1; then
+            echo "Release $VERSION already exists."
+            exit 0
+          fi
+
+          gh release create "$VERSION" \
+            main.js manifest.json styles.css \
+            --title "$VERSION" \
+            --notes "Initial mobile-compatible release. Tap-to-open navigation, touch-sized controls, outside-tap dismissal, and responsive mobile layout."
